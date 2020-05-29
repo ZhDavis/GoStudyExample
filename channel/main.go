@@ -3,16 +3,17 @@ package main
 import (
 	"fmt"
 )
+
 func ChannelCache() {
 	fmt.Println("ChannelCache: start!")
 	defer fmt.Println("ChannelCache: exit!")
-	c := make(chan int,10)
+	c := make(chan int, 10)
 	defer close(c)
 	go func() {
-		c<- 2+3
+		c <- 2 + 3
 	}()
 	i := <-c
-	fmt.Println("i:",i)
+	fmt.Println("i:", i)
 	return
 }
 
@@ -22,10 +23,10 @@ func ChannelNoCache() {
 	c := make(chan int)
 	defer close(c)
 	go func() {
-		c<- 2+3
+		c <- 2 + 3
 	}()
 	i := <-c
-	fmt.Println("i:",i)
+	fmt.Println("i:", i)
 	return
 }
 
